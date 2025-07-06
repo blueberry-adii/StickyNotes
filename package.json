@@ -10,8 +10,8 @@
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^5.1.0",
-    "svelte": "^5.34.7",
-    "vite": "^7.0.0"
+    "svelte": "^5.35.2",
+    "vite": "^6.3.5"
   },
   "description": "This template should help get you started developing with Svelte in Vite.",
   "main": "svelte.config.js",
