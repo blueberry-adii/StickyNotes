@@ -5,6 +5,14 @@ Create, drag, edit, and delete sticky notes anywhere on the screen — like your
 
 ---
 
+## 🌐 Live Demo
+
+Here is the link of the live site - [StickyNotesApp](https://https://sticky-notes-svelte.netlify.app/)
+
+- Use on Laptops/PCs for best experience!!
+
+---
+
 ## ✨ Features
 
 - 🧠 Create notes anywhere on the screen with a click
@@ -38,9 +46,11 @@ npm install
 npm run dev
 
 src/
-├── App.svelte           # Main component
-├── Note.svelte          # Sticky Note component (if separated)
-└── main.js              # Entry point
+├──App.svelte          # Main component
+├──lib/
+|   ├── Page1.svelte   # Log In Page
+|   └── Page2.svelte   # Sticky Note component
+└── main.js            # Entry point
 ```
 
 ---
@@ -59,6 +69,6 @@ src/
 
 ---
 
-## 🤙 Author
+## ✨ Author
 
 Made with dedication and ☕ by **Aditya Prasad Padhy**
