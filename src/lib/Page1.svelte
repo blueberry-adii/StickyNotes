@@ -11,7 +11,7 @@
     "Click on Page 2",
     "Enter your notes",
     "Click Anywhere",
-    "Double click to edit notes",
+    "Click on edit icon to edit notes",
     "Press Enter to save them",
     "OR Esc to Escape editing",
     "Click on delete icon to delete notes",

@@ -9,7 +9,7 @@ Create, drag, edit, and delete sticky notes anywhere on the screen — like your
 
 - 🧠 Create notes anywhere on the screen with a click
 - 🎨 Each note has a random background color (good contrast with white text)
-- 🖊️ Double-click to edit any note
+- 🖊️ Click on Edit icon to edit any note
 - 🚮 Delete note by clicking on the Trash icon
 - 🧲 Drag notes to reposition them
 - 💾 Notes saved in `localStorage` (they persist when you Log In with your same UserName)
