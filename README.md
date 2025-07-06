@@ -7,7 +7,7 @@ Create, drag, edit, and delete sticky notes anywhere on the screen — like your
 
 ## 🌐 Live Demo
 
-Here is the link of the live site - [StickyNotesApp](https://https://sticky-notes-svelte.netlify.app/)
+Here is the link of the live site - [StickyNotesApp](https://sticky-notes-svelte.netlify.app/)
 
 - Use on Laptops/PCs for best experience!!
 
