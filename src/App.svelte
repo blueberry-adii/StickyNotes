@@ -32,7 +32,7 @@
     {#if page1}
       <Page1 on:addName={(e) => (name = e.detail.text)} />
     {:else if page2}
-      <Page2 />
+      <Page2 {name} />
     {/if}
   </div>
 </main>

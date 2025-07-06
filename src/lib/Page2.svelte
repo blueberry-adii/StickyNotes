@@ -1,5 +1,7 @@
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
+  export let name;
+  let users = [];
   let notes = [];
   let message = "";
 
@@ -19,6 +21,35 @@
     "#ab47bc",
     "#fb8c00",
   ];
+
+  function checkUser() {
+    let idx = users.findIndex((user) => user.name == name);
+
+    if (idx !== -1) {
+      notes = [
+        ...users[idx].notes.map((note) => {
+          return { ...note, isEditing: false, editedText: "" };
+        }),
+      ];
+    } else {
+      users = [...users, { name: name, notes: [] }];
+      notes = [];
+      saveUsersToStorage();
+    }
+
+    return idx;
+  }
+
+  function saveUsersToStorage() {
+    localStorage.setItem("users", JSON.stringify(users));
+  }
+
+  function loadUsersFromStorage() {
+    const stored = localStorage.getItem("users");
+    if (stored) {
+      users = JSON.parse(stored);
+    }
+  }
 
   function startEditing(index) {
     save(index);
@@ -65,17 +96,12 @@
   }
 
   function saveNotesToStorage() {
-    localStorage.setItem("stickyNotes", JSON.stringify(notes));
-  }
+    let idx = users.findIndex((user) => user.name == name);
 
-  function loadNotesFromStorage() {
-    const stored = localStorage.getItem("stickyNotes");
-    if (stored) {
-      notes = JSON.parse(stored).map((n) => ({
-        ...n,
-        isEditing: false,
-        editedText: "",
-      }));
+    if (idx !== -1) {
+      users[idx] = { ...users[idx], notes: notes };
+      users = [...users];
+      saveUsersToStorage();
     }
   }
 
@@ -148,7 +174,8 @@
   }
 
   onMount(() => {
-    loadNotesFromStorage();
+    loadUsersFromStorage();
+    checkUser();
     window.addEventListener("click", handleClick);
     window.addEventListener("click", handleGlobalClick);
     window.addEventListener("mousemove", drag);

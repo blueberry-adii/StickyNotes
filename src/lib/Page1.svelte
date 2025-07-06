@@ -7,14 +7,15 @@
   let msg = ["Log In into your account", "Please enter your name"];
   let errorMsg = { msg: msg[0], isError: false };
   $: errorMsg.isError = errorMsg.msg == msg[0] ? false : true;
-  const todos = [
+  const instructions = [
     "Click on Page 2",
     "Enter your notes",
     "Click Anywhere",
-    "Double click to  edit notes",
+    "Double click to edit notes",
     "Press Enter to save them",
     "OR Esc to Escape editing",
     "Click on delete icon to delete notes",
+    "Enter your exact name every time to access your saved notes",
   ];
   const logIn = () => {
     if (name) {
@@ -61,7 +62,7 @@
   </button>
   {#if isLoggedIn}
     <p>Welcome back {name}!</p>
-    {#each todos as todo, i}
+    {#each instructions as todo, i}
       <li>{i + 1}. {todo}</li>
     {/each}
   {:else}
