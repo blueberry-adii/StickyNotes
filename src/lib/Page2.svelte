@@ -328,6 +328,7 @@
     justify-content: center;
     align-items: center;
     gap: 6px;
+    border-radius: 6px;
     font-weight: 600;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     max-width: 300px;

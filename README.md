@@ -51,11 +51,11 @@ src/
 
 - Add resizable notes
 
-- Mobile/touch support for dragging
+- Mobile/touch improvement for dragging
 
 - Markdown or rich text support
 
-- Theming & dark mode
+- Theming & light-dark mode
 
 ---
 

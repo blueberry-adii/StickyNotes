@@ -48,6 +48,7 @@
 
 <div>
   <input
+    class="nameInput"
     type="text"
     bind:value={name}
     readonly={isLoggedIn}
@@ -74,8 +75,15 @@
 <style>
   li {
     list-style: none;
+    text-align: justify;
+    padding-left: 15%;
+    max-width: 300px;
   }
   .error {
     color: rgb(255, 123, 123);
+  }
+  .nameInput {
+    margin-right: 6px;
+    margin-bottom: 6px;
   }
 </style>
