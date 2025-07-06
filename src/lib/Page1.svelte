@@ -1,5 +1,5 @@
 <script>
-  import Ani from "./Ani.svelte";
+  import TwinkleText from "./TwinkleText.svelte";
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
   let name;
@@ -68,7 +68,7 @@
     <p class={errorMsg.isError ? "error" : ""}>{errorMsg.msg}</p>
   {/if}
 </div>
-<Ani />
+<TwinkleText />
 
 <style>
   li {

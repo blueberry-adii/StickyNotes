@@ -1,6 +1,6 @@
 <script>
-  import Counter from "./lib/Counter.svelte";
-  import ToDo from "./lib/ToDo.svelte";
+  import Page1 from "./lib/Page1.svelte";
+  import Page2 from "./lib/Page2.svelte";
   let name;
   let page1 = true;
   $: page2 = !page1;
@@ -30,9 +30,9 @@
   {/if}
   <div class="card">
     {#if page1}
-      <Counter on:addName={(e) => (name = e.detail.text)} />
+      <Page1 on:addName={(e) => (name = e.detail.text)} />
     {:else if page2}
-      <ToDo />
+      <Page2 />
     {/if}
   </div>
 </main>
