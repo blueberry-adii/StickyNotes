@@ -1,9 +1,9 @@
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
-  export let name;
+  let { name } = $props();
   let users = [];
-  let notes = [];
-  let message = "";
+  let notes = $state([]);
+  let message = $state("");
 
   let draggedIndex = null;
   let offsetX = 0;
@@ -230,7 +230,7 @@
     role="button"
     tabindex="0"
     style="left: {note.x}%; top: {note.y}%; background-color: {note.color}"
-    on:pointerdown={(e) => {
+    onpointerdown={(e) => {
       if (!note.isEditing) startDrag(e, i);
     }}
   >
@@ -239,15 +239,15 @@
       <input
         type="text"
         bind:value={note.editedText}
-        on:keydown={(e) => handleEditKey(e, i)}
-        on:blur={() => saveEdit(i)}
+        onkeydown={(e) => handleEditKey(e, i)}
+        onblur={() => saveEdit(i)}
         autofocus
       />
     {:else}
       <!-- svelte-ignore a11y_consider_explicit_label -->
       <button
         class="del"
-        on:click={(e) => {
+        onclick={(e) => {
           e.stopPropagation();
           startEditing(i);
         }}
@@ -283,7 +283,7 @@
       <!-- svelte-ignore a11y_consider_explicit_label -->
       <button
         class="del"
-        on:click={() => {
+        onclick={() => {
           deleteNote(i);
         }}
         ><svg

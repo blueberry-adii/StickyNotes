@@ -1,12 +1,11 @@
 <script>
   import TwinkleText from "./TwinkleText.svelte";
-  import { createEventDispatcher } from "svelte";
-  const dispatch = createEventDispatcher();
-  let name;
-  let isLoggedIn = false;
+  let { addName } = $props();
+  let name = $state();
+  let isLoggedIn = $state(false);
   let msg = ["Log In into your account", "Please enter your name"];
-  let errorMsg = { msg: msg[0], isError: false };
-  $: errorMsg.isError = errorMsg.msg == msg[0] ? false : true;
+  let errorMsg = $state(msg[0]);
+  let isError = $derived(errorMsg == msg[1]);
   const instructions = [
     "Click on Page 2",
     "Enter your notes",
@@ -19,29 +18,29 @@
   ];
   const logIn = () => {
     if (name) {
-      dispatch("addName", { text: name });
+      addName(name);
       return true;
     } else {
-      errorMsg = { msg: msg[1], isError: true };
+      errorMsg = msg[1];
       return false;
     }
   };
   const changeErr = () => {
     if (!isLoggedIn) {
       if (!name) {
-        errorMsg.msg = msg[1];
+        errorMsg = msg[1];
       } else {
-        errorMsg.msg = msg[0];
+        errorMsg = msg[0];
       }
     }
   };
   const logOut = () => {
     name = "";
-    dispatch("addName", { text: name });
+    addName(name);
     return false;
   };
   const handleClick = () => {
-    errorMsg.msg = msg[0];
+    errorMsg = msg[0];
     isLoggedIn = isLoggedIn ? logOut() : logIn();
   };
 </script>
@@ -52,9 +51,9 @@
     type="text"
     bind:value={name}
     readonly={isLoggedIn}
-    on:input={changeErr}
+    oninput={changeErr}
   />
-  <button on:click={handleClick}>
+  <button onclick={handleClick}>
     {#if isLoggedIn}
       Log Out
     {:else}
@@ -67,7 +66,7 @@
       <li>{i + 1}. {todo}</li>
     {/each}
   {:else}
-    <p class={errorMsg.isError ? "error" : ""}>{errorMsg.msg}</p>
+    <p class={isError ? "error" : ""}>{errorMsg}</p>
   {/if}
 </div>
 <TwinkleText />

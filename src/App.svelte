@@ -1,16 +1,16 @@
 <script>
   import Page1 from "./lib/Page1.svelte";
   import Page2 from "./lib/Page2.svelte";
-  let name;
-  let page1 = true;
-  $: page2 = !page1;
+  let name = $state();
+  let page1 = $state(true);
+  let page2 = $derived(!page1);
 </script>
 
 <main>
   {#if name}
     <button
       class={page1 ? "active" : ""}
-      on:click={() => {
+      onclick={() => {
         if (page2) {
           name = "";
         }
@@ -21,7 +21,7 @@
     </button>
     <button
       class={page2 ? "active" : ""}
-      on:click={() => {
+      onclick={() => {
         page1 = false;
       }}
     >
@@ -30,7 +30,11 @@
   {/if}
   <div class="card">
     {#if page1}
-      <Page1 on:addName={(e) => (name = e.detail.text)} />
+      <Page1
+        addName={(inputName) => {
+          name = inputName;
+        }}
+      />
     {:else if page2}
       <Page2 {name} />
     {/if}
